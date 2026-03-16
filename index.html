@@ -1,394 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Jose Giraldy | Data Engineer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
-     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { 
-        font-family: 'Open Sans', sans-serif; 
-        scroll-behavior: smooth; 
-        }
-        .project-card:hover { transform: translateY(-5px); transition: all 0.3s ease; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        
-        .force-logo-size {
-            height: 32px !important;
-            width: auto;
-            object-fit: contain;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Jose Giraldy | Data Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0d12;
+      color: #f5f7fb;
+    }
 
-        .company-logo-container { 
-            width: 60px; 
-            height: 60px; 
-            border-radius: 12px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background-color: white;
-            border: 1px solid #f3f4f6;
-            flex-shrink: 0; 
-            overflow: hidden;
-            padding: 4px;
-        }
+    .container-main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
 
-        .company-logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+    .glass {
+        background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
 
-        /* Skill Tag Animation */
-        .skill-tag {
-            transition: all 0.2s ease;
-            cursor: default;
-        }
-        .skill-tag:hover {
-            background-color: #2563eb;
-            color: white;
-            border-color: #2563eb;
-            transform: scale(1.05);
-        }
-    </style>
+    .soft-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: .35s ease;
+    }
+
+    .soft-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(96,165,250,0.35);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+
+    .section-label {
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff 0%, #93c5fd 45%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grid-line {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .chip {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #dbeafe;
+    }
+
+    .chip:hover {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+  </style>
 </head>
-<body class="bg-[#fafafa] text-[#1a1a1a]">
-    <div id="contactModal" class="fixed inset-0 z-[999] hidden items-center justify-center px-4">
-                <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="closeModal()"></div>
-                
-                <div id="modalContent" class="relative bg-white w-full max-w-[600px] rounded-sm shadow-2xl transform transition-all scale-95 opacity-0 duration-300 p-12 md:p-16 text-center">
-                    
-                    <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+<body class="grid-line">
+    <!-- <section id="cv" class="py-24 border-t border-white/10">
+        <div class="container-main">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+            <div>
+                <p class="section-label mb-4">Resume</p>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tight">Curriculum Vitae</h2>
+            </div>
+            <p class="text-white/50 max-w-xl">
+                A quick overview of my experience in data engineering, analytics, and cloud platforms.
+            </p>
+            </div>
 
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-blue-900 leading-tight mb-4">
-                        Get In Touch
-                    </h2>
-                    
-                    <p class="text-gray-600 text-lg mb-10 max-w-md mx-auto leading-relaxed">
-                        Interested in collaboration or have any questions? feel free to reach me!
-                    </p>
+            <div class="glass rounded-[32px] p-8 md:p-10">
+            <div class="rounded-[24px] border border-white/10 bg-white/[0.03] p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                <h3 class="text-2xl md:text-3xl font-bold">David Jose Giraldy — CV</h3>
+                <p class="text-white/55 mt-3 max-w-2xl">
+                    Preview my resume in a modal, or open the full document in Google Drive.
+                </p>
+                </div>
 
-                    <div class="space-y-4 max-w-sm mx-auto">
-                        <a href="https://linkedin.com/in/davidjosegiraldy" target="_blank" 
-                        class="flex items-center justify-center gap-3 w-full bg-[#0077b5] text-white font-bold py-4 px-6 hover:bg-[#005a87] transition uppercase tracking-widest text-sm shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                            Connect via LinkedIn
-                        </a>
+                <div class="flex flex-wrap gap-4">
+                <button onclick="openCvModal()" class="rounded-full bg-white text-black px-6 py-3 font-bold hover:bg-blue-100 transition">
+                    Preview CV
+                </button>
 
-                        <a href="https://wa.me/6281388883004" target="_blank" 
-                        class="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white font-bold py-4 px-6 hover:bg-[#128C7E] transition uppercase tracking-widest text-sm shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.556-5.333 11.888-11.889 11.888-2.013 0-3.991-.512-5.747-1.483l-6.236 1.636zm6.315-3.73l.375.222c1.517.899 3.256 1.373 5.042 1.373 5.308 0 9.623-4.315 9.623-9.623 0-5.308-4.315-9.623-9.623-9.623-5.309 0-9.623 4.315-9.623 9.623 0 1.944.587 3.842 1.697 5.441l.244.353-1.001 3.653 3.743-.982zm11.334-7.11c-.301-.151-1.781-.878-2.057-.978-.275-.1-.476-.151-.675.151-.199.301-.771.978-.945 1.178-.175.199-.349.226-.65.075-.301-.151-1.272-.469-2.422-1.496-.895-.798-1.5-1.783-1.675-2.083-.175-.3-.019-.462.131-.611.135-.134.301-.351.451-.526.151-.175.201-.301.301-.502.1-.199.05-.376-.025-.526-.075-.151-.675-1.632-.925-2.234-.244-.588-.493-.509-.675-.518-.174-.01-.373-.012-.573-.012s-.526.075-.801.376c-.275.301-1.053 1.028-1.053 2.508s1.077 2.91 1.228 3.111c.151.199 2.119 3.235 5.132 4.536.717.31 1.277.495 1.711.633.721.227 1.377.195 1.896.118.578-.085 1.781-.728 2.031-1.431.25-.702.25-1.304.175-1.431-.075-.126-.275-.201-.575-.351z"/>
-                            </svg>
-                            Chat on WhatsApp
-                        </a>
-
-                        <a href="mailto:davidjosegiraldy@gmail.com" target="_blank" 
-                        class="flex items-center justify-center gap-3 w-full bg-[#000000] text-white font-bold py-4 px-6 hover:bg-[#000000] transition uppercase tracking-widest text-sm shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.556-5.333 11.888-11.889 11.888-2.013 0-3.991-.512-5.747-1.483l-6.236 1.636zm6.315-3.73l.375.222c1.517.899 3.256 1.373 5.042 1.373 5.308 0 9.623-4.315 9.623-9.623 0-5.308-4.315-9.623-9.623-9.623-5.309 0-9.623 4.315-9.623 9.623 0 1.944.587 3.842 1.697 5.441l.244.353-1.001 3.653 3.743-.982zm11.334-7.11c-.301-.151-1.781-.878-2.057-.978-.275-.1-.476-.151-.675.151-.199.301-.771.978-.945 1.178-.175.199-.349.226-.65.075-.301-.151-1.272-.469-2.422-1.496-.895-.798-1.5-1.783-1.675-2.083-.175-.3-.019-.462.131-.611.135-.134.301-.351.451-.526.151-.175.201-.301.301-.502.1-.199.05-.376-.025-.526-.075-.151-.675-1.632-.925-2.234-.244-.588-.493-.509-.675-.518-.174-.01-.373-.012-.573-.012s-.526.075-.801.376c-.275.301-1.053 1.028-1.053 2.508s1.077 2.91 1.228 3.111c.151.199 2.119 3.235 5.132 4.536.717.31 1.277.495 1.711.633.721.227 1.377.195 1.896.118.578-.085 1.781-.728 2.031-1.431.25-.702.25-1.304.175-1.431-.075-.126-.275-.201-.575-.351z"/>
-                            </svg>
-                            Continue With Email
-                        </a>
-                    </div>
+                <a href="https://drive.google.com/file/d/1p6yENaPCZdKq0Zowbv01MCb9RD2jov-w/view?usp=sharing"
+                    target="_blank"
+                    class="rounded-full border border-white/15 px-6 py-3 font-bold hover:bg-white/5 transition">
+                    Open CV
+                </a>
                 </div>
             </div>
-
-            <script>
-                const modal = document.getElementById('contactModal');
-                const content = document.getElementById('modalContent');
-
-                function openModal() {
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-                    
-                    // Animasi masuk
-                    setTimeout(() => {
-                        content.classList.remove('scale-95', 'opacity-0');
-                        content.classList.add('scale-100', 'opacity-100');
-                    }, 10);
-                    
-                    // Kunci Scroll
-                    document.body.style.overflow = 'hidden';
-                }
-
-                function closeModal() {
-                    content.classList.add('scale-95', 'opacity-0');
-                    content.classList.remove('scale-100', 'opacity-100');
-                    
-                    setTimeout(() => {
-                        modal.classList.add('hidden');
-                        modal.classList.remove('flex');
-                        document.body.style.overflow = 'auto';
-                    }, 300);
-                }
-            </script>
-
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-600">
-                <a href="#about" class="hover:text-blue-600">ABOUT</a>
-                <a href="#experience" class="hover:text-blue-600">EXPERIENCE</a>
-                <a href="#projects" class="hover:text-blue-600">PROJECTS</a>
-                <a href="#skills" class="hover:text-blue-600">SKILLS</a>
             </div>
-            <button onclick="openModal()" class="text-sm font-bold text-blue-600 border border-blue-600 px-5 py-2 rounded-full hover:bg-blue-50 transition">
-                CONTACT ME
+        </div>
+    </section> -->
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-[#0b0d12]/80 backdrop-blur-xl">
+    <div class="container-main h-20 flex items-center justify-between">
+      <a href="#top" class="font-extrabold tracking-tight text-lg">DJG.</a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/70 font-medium">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#experience" class="hover:text-white transition">Experience</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#stack" class="hover:text-white transition">Stack</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+        <button onclick="openCvModal()" class="rounded-full bg-white text-black px-6 py-3 font-bold hover:bg-blue-100 transition">
+            Curriculum Vitae (CV)
+        </button>
+
+      </div>
+      <a href="#contact" class="rounded-full bg-white text-black px-5 py-2.5 text-sm font-bold hover:bg-blue-100 transition">
+        Let’s Talk
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <!-- <section id="top" class="pt-36 pb-20">
+    <div class="container-main">
+      <div class="grid lg:grid-cols-[1.4fr_0.6fr] gap-10 items-end">
+        <div>
+          <p class="section-label mb-5">Data Engineer · Cloud · Analytics</p>
+          <h1 class="text-5xl md:text-7xl lg:text-[88px] leading-[0.95] font-black tracking-[-0.04em] max-w-5xl">
+            Building <span class="gradient-text">scalable data platforms</span> for modern enterprises.
+          </h1>
+          <p class="mt-8 text-white/65 text-lg md:text-xl max-w-2xl leading-relaxed">
+            I design data platforms, ETL pipelines, and analytics systems across AWS, Snowflake, and Databricks ecosystems—turning fragmented data into reliable decision systems.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#projects" class="rounded-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 font-semibold transition">
+              View Projects
+            </a>
+            <a href="#experience" class="rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 px-6 py-3 font-semibold transition">
+              See Experience
+            </a>
+          </div>
+
+        <div class="mt-14 grid sm:grid-cols-3 gap-4 max-w-5xl">
+        <div class="soft-card rounded-3xl p-8 min-h-[220px] flex flex-col justify-between">
+            <div>
+            <p class="text-5xl font-extrabold leading-none">4+</p>
+            </div>
+            <p class="text-sm text-white/55 uppercase tracking-[0.18em] leading-snug">
+            Major Industries<br>Handled
+            </p>
+        </div>
+
+        <div class="soft-card rounded-3xl p-8 min-h-[220px] flex flex-col justify-between">
+            <div>
+            <p class="text-5xl font-extrabold leading-none">40+</p>
+            </div>
+            <p class="text-sm text-white/55 uppercase tracking-[0.18em] leading-snug">
+            Reports Automated
+            </p>
+        </div>
+
+        <div class="soft-card rounded-3xl p-8 min-h-[220px] flex flex-col justify-between">
+            <div class="flex items-center gap-5 flex-wrap min-h-[48px]">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+                alt="AWS"
+                class="h-8 w-auto object-contain opacity-90"
+            />
+
+            <img
+                src="https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg"
+                alt="Snowflake"
+                class="h-8 w-8 object-contain opacity-90"
+            />
+
+            <img
+                src="https://cdn.bfldr.com/9AYANS2F/at/k8bgnnxhb4bggjk88r4x9snf/databricks-symbol-color.svg?auto=webp&format=svg"
+                alt="Databricks"
+                class="h-8 w-8 object-contain opacity-90"
+            />
+            </div>
+
+            <p class="text-sm text-white/55 uppercase tracking-[0.18em] leading-snug">
+            Core Delivery Stack
+            </p>
+        </div>
+        </div>
+
+=
+
+        <div class="glass rounded-[32px] p-8 md:p-10">
+        <p class="text-white/40 uppercase text-xs tracking-[0.2em] mb-6">Selected stack</p>
+
+        <div class="space-y-4">
+            <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+                <h3 class="text-white font-extrabold text-2xl leading-none">AWS</h3>
+                <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">Glue · S3 · Redshift</p>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+                <h3 class="text-white font-extrabold text-2xl leading-none">Snowflake</h3>
+                <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">Task DAG · Warehousing</p>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+                <h3 class="text-white font-extrabold text-2xl leading-none">Databricks</h3>
+                <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">Delta · Unity Catalog</p>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+                <h3 class="text-white font-extrabold text-2xl leading-none">Python</h3>
+                <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">PySpark · Pandas · ML</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <section id="top" class="pt-36 pb-20">
+  <div class="container-main">
+    <div class="grid lg:grid-cols-[1.4fr_0.6fr] gap-10 items-start">
+      
+      <!-- KIRI -->
+      <div>
+        <p class="section-label mb-5">Data Engineer · Cloud · Analytics</p>
+        <h1 class="text-5xl md:text-7xl lg:text-[88px] leading-[0.95] font-black tracking-[-0.04em] max-w-5xl">
+          Building <span class="gradient-text">scalable data platforms</span> for modern enterprises.
+        </h1>
+        <p class="mt-8 text-white/65 text-lg md:text-xl max-w-2xl leading-relaxed">
+          I design data platforms, ETL pipelines, and analytics systems across AWS, Snowflake, and Databricks ecosystems.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#projects" class="rounded-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 font-semibold transition">
+            View Projects
+          </a>
+          <a href="#experience" class="rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 px-6 py-3 font-semibold transition">
+            See Experience
+          </a>
+        </div>
+
+        <div class="mt-14 grid sm:grid-cols-3 gap-4 max-w-5xl">
+          <div class="soft-card rounded-3xl p-8 min-h-[220px] flex flex-col justify-between">
+            <div class="min-h-[48px] flex items-start">
+              <p class="text-5xl font-extrabold leading-none">4+</p>
+            </div>
+            <p class="text-sm text-white/55 uppercase tracking-[0.18em] leading-snug">
+              Major Industries<br>Handled
+            </p>
+          </div>
+
+          <div class="soft-card rounded-3xl p-8 min-h-[220px] flex flex-col justify-between">
+            <div class="min-h-[48px] flex items-start">
+              <p class="text-5xl font-extrabold leading-none">40+</p>
+            </div>
+            <p class="text-sm text-white/55 uppercase tracking-[0.18em] leading-snug">
+              Reports Automated
+            </p>
+          </div>
+
+          <div class="soft-card rounded-3xl p-8 min-h-[220px] flex flex-col justify-between">
+            <div class="min-h-[48px] flex items-center gap-5 flex-wrap">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" class="h-8 w-auto object-contain opacity-90" />
+              <img src="https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg" alt="Snowflake" class="h-8 w-8 object-contain opacity-90" />
+              <img src="https://cdn.bfldr.com/9AYANS2F/at/k8bgnnxhb4bggjk88r4x9snf/databricks-symbol-color.svg?auto=webp&format=svg" alt="Databricks" class="h-8 w-8 object-contain opacity-90" />
+            </div>
+            <p class="text-sm text-white/55 uppercase tracking-[0.18em] leading-snug">
+              Core Delivery Stack
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KANAN -->
+      <div class="glass rounded-[32px] p-8 lg:p-10 self-start">
+        <p class="text-white/40 uppercase text-xs tracking-[0.2em] mb-6">Selected stack</p>
+
+        <div class="space-y-4">
+          <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+            <h3 class="text-white font-extrabold text-2xl leading-none">AWS</h3>
+            <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">Glue · S3 · Redshift</p>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+            <h3 class="text-white font-extrabold text-2xl leading-none">Snowflake</h3>
+            <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">Task DAG · Warehousing</p>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+            <h3 class="text-white font-extrabold text-2xl leading-none">Databricks</h3>
+            <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">Delta · Unity Catalog</p>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 px-6 py-5 grid md:grid-cols-[160px_1fr] gap-2 md:gap-4 bg-white/[0.02]">
+            <h3 class="text-white font-extrabold text-2xl leading-none">Python</h3>
+            <p class="text-white/50 text-lg md:text-xl font-medium leading-tight">PySpark · Pandas · ML</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 border-t border-white/10">
+    <div class="container-main grid lg:grid-cols-[0.7fr_1.3fr] gap-10">
+      <div>
+        <p class="section-label mb-4">About</p>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight">From raw data to decision-ready systems.</h2>
+      </div>
+      <div class="text-white/65 text-lg leading-relaxed space-y-6">
+        <p>
+          I specialize in cloud data engineering with a strong focus on medallion architecture, ETL orchestration, analytics enablement, and production-grade reporting systems.
+        </p>
+        <p>
+          My work spans enterprise modernization initiatives, migration to cloud data warehouses, lakehouse architecture, and automation use cases that cut manual work dramatically.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-24 border-t border-white/10">
+    <div class="container-main">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+        <div>
+          <p class="section-label mb-4">Case Studies</p>
+          <h2 class="text-4xl md:text-6xl font-black tracking-tight">Selected Projects</h2>
+        </div>
+        <p class="text-white/50 max-w-xl">
+          Enterprise-scale work across healthcare, finance, retail, and automotive.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <article class="soft-card rounded-[28px] p-8">
+          <div class="flex items-center justify-between gap-4 mb-8">
+            <span class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">Kimia Farma</span>
+            <span class="text-xs text-white/45">AWS · Glue · Redshift · Power BI</span>
+          </div>
+          <h3 class="text-3xl font-bold leading-tight mb-5">Cloud Data Modernization</h3>
+          <p class="text-white/60 leading-relaxed mb-8">
+            Led cloud warehouse migration initiatives, implemented medallion architecture on S3, and built ETL pipelines with AWS Glue for analytics-ready executive reporting.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">Medallion</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Glue ETL</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Redshift</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Power BI</span>
+          </div>
+        </article>
+
+        <article class="soft-card rounded-[28px] p-8">
+          <div class="flex items-center justify-between gap-4 mb-8">
+            <span class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">Home Credit Indonesia</span>
+            <span class="text-xs text-white/45">Snowflake · S3 · Iceberg</span>
+          </div>
+          <h3 class="text-3xl font-bold leading-tight mb-5">Cloud Migration & Risk Pricing PoC</h3>
+          <p class="text-white/60 leading-relaxed mb-8">
+            Designed interoperable architecture using Apache Iceberg on S3, orchestrated Snowflake Task DAG workflows, and supported high-performance analytical workloads.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">Snowflake</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Apache Iceberg</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Task DAG</span>
+          </div>
+        </article>
+
+        <article class="soft-card rounded-[28px] p-8">
+          <div class="flex items-center justify-between gap-4 mb-8">
+            <span class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">Mitra Adiperkasa (MAP)</span>
+            <span class="text-xs text-white/45">Databricks · Delta · Unity Catalog</span>
+          </div>
+          <h3 class="text-3xl font-bold leading-tight mb-5">Retail Data Infrastructure Design</h3>
+          <p class="text-white/60 leading-relaxed mb-8">
+            Architected a Databricks lakehouse environment for large-scale retail workloads with strong governance, lineage, and secure multi-team data access.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">Databricks</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Delta Lake</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Unity Catalog</span>
+          </div>
+        </article>
+
+        <article class="soft-card rounded-[28px] p-8">
+          <div class="flex items-center justify-between gap-4 mb-8">
+            <span class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">Astra Daihatsu</span>
+            <span class="text-xs text-white/45">Python · Streamlit · XGBoost</span>
+          </div>
+          <h3 class="text-3xl font-bold leading-tight mb-5">Analytics Automation</h3>
+          <p class="text-white/60 leading-relaxed mb-8">
+            Automated dozens of manual reports and built forecasting + visualization workflows that dramatically reduced turnaround time for business reporting.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">Python</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Streamlit</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">XGBoost</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-24 border-t border-white/10">
+    <div class="container-main">
+      <p class="section-label mb-4">Experience</p>
+      <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-14">Professional Journey</h2>
+
+      <div class="space-y-5">
+        <div class="soft-card rounded-[24px] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div>
+            <h3 class="text-2xl font-bold">Data Engineer</h3>
+            <p class="text-white/55 mt-1">Insignia.co.id</p>
+          </div>
+          <span class="text-sm rounded-full border border-blue-400/20 bg-blue-500/10 text-blue-300 px-4 py-2 font-semibold">Nov 2025 – Present</span>
+        </div>
+
+        <div class="soft-card rounded-[24px] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div>
+            <h3 class="text-2xl font-bold">Data Engineering & Analytics</h3>
+            <p class="text-white/55 mt-1">Astra Daihatsu Motor</p>
+          </div>
+          <span class="text-sm rounded-full border border-white/10 bg-white/5 text-white/70 px-4 py-2 font-semibold">Apr 2024 – Nov 2025</span>
+        </div>
+
+        <div class="soft-card rounded-[24px] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div>
+            <h3 class="text-2xl font-bold">Data Scientist</h3>
+            <p class="text-white/55 mt-1">Maybank Indonesia Finance</p>
+          </div>
+          <span class="text-sm rounded-full border border-white/10 bg-white/5 text-white/70 px-4 py-2 font-semibold">Sep 2022 – Feb 2023</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" class="py-24 border-t border-white/10">
+    <div class="container-main">
+      <p class="section-label mb-4">Core Stack</p>
+      <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-14">Tools I build with</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="soft-card rounded-[24px] p-6">
+          <h3 class="font-bold text-blue-300 mb-5">Cloud & Platforms</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">AWS</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Snowflake</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Databricks</span>
+          </div>
+        </div>
+
+        <div class="soft-card rounded-[24px] p-6">
+          <h3 class="font-bold text-blue-300 mb-5">Processing</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">PySpark</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">AWS Glue</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Pandas</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Talend</span>
+          </div>
+        </div>
+
+        <div class="soft-card rounded-[24px] p-6">
+          <h3 class="font-bold text-blue-300 mb-5">Storage & Governance</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip px-3 py-2 rounded-xl text-sm">S3</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Redshift</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Delta Lake</span>
+            <span class="chip px-3 py-2 rounded-xl text-sm">Unity Catalog</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 border-t border-white/10">
+    <div class="container-main">
+      <div class="rounded-[36px] glass p-8 md:p-12 lg:p-16">
+        <p class="section-label mb-4">Contact</p>
+        <h2 class="text-4xl md:text-6xl font-black tracking-tight max-w-3xl">
+          Let’s build data systems that actually scale.
+        </h2>
+        <p class="mt-6 text-white/60 text-lg max-w-2xl leading-relaxed">
+          Open for collaboration, consulting, and data platform initiatives.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+            <a href="mailto:davidjosegiraldy@gmail.com" class="rounded-full bg-white text-black px-6 py-3 font-bold hover:bg-blue-100 transition">
+                Email Me
+            </a>
+            <a href="https://linkedin.com/in/davidjosegiraldy" target="_blank"
+            class="rounded-full border border-[#0A66C2] bg-[#0A66C2]/10 text-[#4DA3FF] px-6 py-3 font-bold hover:bg-[#0A66C2] hover:text-white transition">
+            LinkedIn
+            </a>
+
+            <a href="https://wa.me/6281388883004" target="_blank"
+            class="rounded-full border border-[#25D366] bg-[#25D366]/10 text-[#4ADE80] px-6 py-3 font-bold hover:bg-[#25D366] hover:text-white transition">
+            WhatsApp
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-white/35 text-sm">
+    David Jose Giraldy — Data Engineer Portfolio
+  </footer>
+
+  <div id="cvModal" class="fixed inset-0 z-[999] hidden items-center justify-center px-4">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeCvModal()"></div>
+
+    <div id="cvModalContent" class="relative w-full max-w-6xl rounded-[28px] border border-white/10 bg-[#0f1117] shadow-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+            <div>
+            <h3 class="text-white font-bold text-lg">Curriculum Vitae</h3>
+            <p class="text-white/45 text-sm">Preview document</p>
+            </div>
+
+            <button onclick="closeCvModal()" class="text-white/50 hover:text-white transition text-2xl leading-none">
+            &times;
             </button>
         </div>
-    </nav>
 
-    <section id="about" class="pt-32 pb-20 px-6 bg-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h4 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-gray-900 leading-tight">David Jose Giraldy</h4>
-            <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10">
-                Specializing in Cloud Environments and Medallion Architecture. 
-                Expert in building scalable data platforms using AWS, Snowflake, and Databricks ecosystems.
-            </p>
-            <div class="flex justify-center gap-8 items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" class="force-logo-size opacity-70 hover:opacity-100 transition" alt="AWS">
-                <img src="https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg" class="force-logo-size opacity-70 hover:opacity-100 transition" alt="Snowflake">
-                <img src="https://cdn.bfldr.com/9AYANS2F/at/k8bgnnxhb4bggjk88r4x9snf/databricks-symbol-color.svg?auto=webp&format=svg" class="force-logo-size opacity-70 hover:opacity-100 transition" alt="Databricks">
-                <img src="https://az-icons.com/export/icons/e4e7a2a46c0b319dc5989d4b4977cad1.svg" class="force-logo-size opacity-70 hover:opacity-100 transition" alt="Power BI">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" class="force-logo-size opacity-70 hover:opacity-100 transition" alt="Python">
-            </div>
+        <iframe
+            src="https://drive.google.com/file/d/1p6yENaPCZdKq0Zowbv01MCb9RD2jov-w/preview"
+            class="w-full h-[75vh] bg-white"
+            allow="autoplay">
+        </iframe>
         </div>
-    </section>
+    </div>
 
-    <section id="experience" class="py-24 px-6 border-t border-gray-100">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-16 text-center">Work Experience</h2>
-            <div class="space-y-4">
-                <a href="https://insignia.co.id/about" target="_blank" rel="noopener noreferrer">
-                    <div class="flex items-center gap-6 p-5 rounded-2xl hover:bg-white hover:shadow-sm transition border border-transparent hover:border-gray-100">
-                    <div class="company-logo-container">
-                        <img src="https://insignia.co.id/images/logo-insignia.png" class="company-logo-img" alt="Insignia Logo">
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-bold text-lg">Data Engineer</h3>
-                        <p class="text-gray-500 text-sm font-medium">Insignia.co.id</p>
-                    </div>
-                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-4 py-1.5 rounded-full">Nov 2025 – Present</span>
-                    </div>
-                </a>
-                <a href="https://daihatsu.co.id/profile/about-us/" target="_blank" rel="noopener noreferrer">
-                    <div class="flex items-center gap-6 p-5 rounded-2xl hover:bg-white hover:shadow-sm transition border border-transparent hover:border-gray-100">
-                        <div class="company-logo-container">
-                            <img src="https://nsbytedigital.com/ASTRA-DAIHATSU.png" class="company-logo-img" alt="ADM Logo">
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg">Data Engineering & Analytics</h3>
-                            <p class="text-gray-500 text-sm font-medium">Astra Daihatsu Motor</p>
-                        </div>
-                        <span class="text-xs font-bold text-gray-400 bg-gray-100 px-3 py-1 rounded-full">Apr 2024 – Nov 2025</span>
-                    </div>
-                </a>
-                <a href="https://www.maybankfinance.co.id/profil/sejarah-perusahaan" target="_blank" rel="noopener noreferrer">
-                    <div class="flex items-center gap-6 p-5 rounded-2xl hover:bg-white hover:shadow-sm transition border border-transparent hover:border-gray-100">
-                        <div class="company-logo-container">
-                            <img src="https://www.maybank.co.id/-/media/Feature/Content/External-Link/logo-maybank-fin.png?h=174&iar=0&w=440&hash=509119DDFBF907B1EB89D8920E864065" class="company-logo-img" alt="MIF Logo">
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg">Data Scientist</h3>
-                            <p class="text-gray-500 text-sm font-medium">Maybank Indonesia Finance</p>
-                        </div>
-                        <span class="text-xs font-bold text-gray-400 bg-gray-100 px-3 py-1 rounded-full">Sep 2022 – Feb 2023</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+    <script>
+    const cvModal = document.getElementById('cvModal');
+    const cvModalContent = document.getElementById('cvModalContent');
 
-    <section id="projects" class="py-24 bg-white px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-16 text-center">Featured Projects</h2>
-            <div class="grid lg:grid-cols-2 gap-8">
-                
-                <div class="project-card border border-gray-100 p-8 rounded-3xl bg-[#fafafa] flex flex-col">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase mb-2 inline-block">Kimia Farma</span>
-                            <h3 class="text-2xl font-bold text-gray-900 leading-tight">Cloud Data Modernization</h3>
-                        </div>
-                        <div class="flex gap-3 items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" class="h-6 w-auto" alt="AWS">
-                            <img src="https://icon.icepanel.io/AWS/svg/Analytics/Glue.svg" class="h-6 w-auto" alt="Glue">
-                            <img src="https://icon.icepanel.io/AWS/svg/Analytics/Redshift.svg" class="h-6 w-auto" alt="">
-                        </div>
-                    </div>
-                    <ul class="text-gray-600 mb-6 space-y-3 list-disc pl-5 text-sm flex-grow">
-                        <li>Acted as <strong>Technical Data Lead</strong> for a major migration to Cloud Data Warehouse.</li>
-                        <li>Implemented <strong>Medallion Architecture</strong> on S3 (Bronze, Silver, Gold layers).</li>
-                        <li>Built end-to-end ETL pipelines using <strong>AWS Glue</strong> for staged transformations.</li>
-                        <li>Integrated <strong>Redshift</strong> with <strong>Power BI</strong> for executive reporting.</li>
-                    </ul>
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200/50">
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">AWS Glue</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Redshift</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase text-blue-600">Power BI</span>
-                    </div>
-                </div>
+    function openCvModal() {
+        cvModal.classList.remove('hidden');
+        cvModal.classList.add('flex');
 
-                <div class="project-card border border-gray-100 p-8 rounded-3xl bg-[#fafafa] flex flex-col">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase mb-2 inline-block">Home Credit Indonesia (HCID)</span>
-                            <h3 class="text-2xl font-bold text-gray-900 leading-tight">Cloud Migration</h3>
-                        </div>
-                        <div class="flex gap-3 items-center">
-                            <img src="https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg" class="h-6 w-auto" alt="Snowflake">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" class="h-6 w-auto" alt="AWS">
-                            <img src="https://spark.apache.org/images/Apache_Iceberg_logo.png" class="h-6 w-auto" alt="Iceberg">
-                        </div>
-                    </div>
-                    <ul class="text-gray-600 mb-6 space-y-3 list-disc pl-5 text-sm flex-grow">
-                        <li>Led PoC for an <strong>Operational Risk-Based Pricing</strong> assessment system.</li>
-                        <li>Designed interoperable architecture using <strong>Apache Iceberg</strong> on S3.</li>
-                        <li>Orchestrated workflows via <strong>Snowflake Task DAGs</strong> for scheduled processing.</li>
-                        <li>Optimized queries to support high-performance real-time analytics.</li>
-                    </ul>
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200/50">
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Snowflake</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Iceberg</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Task DAG</span>
-                    </div>
-                </div>
+        setTimeout(() => {
+        cvModalContent.classList.remove('scale-95', 'opacity-0');
+        cvModalContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
 
-                <div class="project-card border border-gray-100 p-8 rounded-3xl bg-[#fafafa] flex flex-col">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase mb-2 inline-block">MITRA ADIPERKASA (MAP)</span>
-                            <h3 class="text-2xl font-bold text-gray-900 leading-tight">Data Infrastructure Design</h3>
-                        </div>
-                        <div class="flex gap-3 items-center">
-                            <img src="https://cdn.bfldr.com/9AYANS2F/at/k8bgnnxhb4bggjk88r4x9snf/databricks-symbol-color.svg?auto=webp&format=svg" class="h-6 w-auto" alt="Databricks">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" class="h-6 w-auto" alt="AWS">
-                            <img src="https://spark.apache.org/images/delta-lake-logo.png" class="h-6 w-auto" alt="Delta-Lake">
-                        </div>
-                    </div>
-                    <ul class="text-gray-600 mb-6 space-y-3 list-disc pl-5 text-sm flex-grow">
-                        <li>Architected <strong>Databricks Lakehouse</strong> for large-scale retail data.</li>
-                        <li>Deployed <strong>Unity Catalog</strong> for centralized governance and lineage.</li>
-                        <li>Optimized <strong>Delta Lake</strong> storage for batch and streaming efficiency.</li>
-                        <li>Ensured secure data access controls across the cloud environment.</li>
-                    </ul>
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200/50">
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Databricks</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Unity Catalog</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase text-orange-600">Delta Lake</span>
-                    </div>
-                </div>
+        document.body.style.overflow = 'hidden';
+    }
 
-                <div class="project-card border border-gray-100 p-8 rounded-3xl bg-[#fafafa] flex flex-col">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase mb-2 inline-block">Astra Daihatsu</span>
-                            <h3 class="text-2xl font-bold text-gray-900 leading-tight">Analytics Automation</h3>
-                        </div>
-                        <div class="flex gap-3 items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" class="h-6 w-auto" alt="Python">
-                            <img src="https://streamlit.io/images/brand/streamlit-mark-color.svg" class="h-6 w-auto" alt="Streamlit">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" class="h-6 w-auto" alt="Scikit-Learn">
-                        </div>
-                    </div>
-                    <ul class="text-gray-600 mb-6 space-y-3 list-disc pl-5 text-sm flex-grow">
-                        <li>Automated 40+ manual reports, reducing time from 3 days to 2 minutes.</li>
-                        <li>Developed <strong>Machine Learning</strong> models (XGBoost) for trend forecasting.</li>
-                        <li>Built interactive visualization tools using <strong>Streamlit</strong> for management.</li>
-                        <li>Implemented NLP techniques for internal dataset cleaning and analysis.</li>
-                    </ul>
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200/50">
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Python</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">Streamlit</span>
-                        <span class="px-2 py-1 bg-white border rounded text-[10px] font-bold uppercase">XGBoost</span>
-                    </div>
-                </div>
+    function closeCvModal() {
+        cvModalContent.classList.add('scale-95', 'opacity-0');
+        cvModalContent.classList.remove('scale-100', 'opacity-100');
 
-            </div>
-        </div>
-    </section>
+        setTimeout(() => {
+        cvModal.classList.add('hidden');
+        cvModal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+        }, 300);
+    }
+    </script>
 
-    <section id="skills" class="py-24 bg-gray-900 text-white px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold mb-16 text-center">Technical Expertise</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                
-                <div class="p-6 rounded-2xl bg-gray-800 border border-gray-700">
-                    <h3 class="text-blue-400 font-bold mb-4 uppercase tracking-wider text-xs">Cloud & Platforms</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Amazon Web Services</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Snowflake</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Databricks</span>
-                    </div>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-gray-800 border border-gray-700">
-                    <h3 class="text-blue-400 font-bold mb-4 uppercase tracking-wider text-xs">Processing & ETL</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">PySpark</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">AWS Glue</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Python (Pandas)</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Talend</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">SQL Server</span>
-                    </div>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-gray-800 border border-gray-700">
-                    <h3 class="text-blue-400 font-bold mb-4 uppercase tracking-wider text-xs">Storage & Governance</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Apache Iceberg</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Delta Lake</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Unity Catalog</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Amazon S3</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Redshift</span>
-                    </div>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-gray-800 border border-gray-700">
-                    <h3 class="text-blue-400 font-bold mb-4 uppercase tracking-wider text-xs">Orchestration</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Snowflake Task DAG</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">AWS CloudWatch</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Medallion Architecture</span>
-                    </div>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-gray-800 border border-gray-700">
-                    <h3 class="text-blue-400 font-bold mb-4 uppercase tracking-wider text-xs">Analytics & AI</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Power BI</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Tableau</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Streamlit</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Machine Learning</span>
-                    </div>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-gray-800 border border-gray-700">
-                    <h3 class="text-blue-400 font-bold mb-4 uppercase tracking-wider text-xs">Database & Infra</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">PostgreSQL</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">MySQL</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">SSMS</span>
-                        <span class="skill-tag px-3 py-1.5 border border-gray-600 rounded-lg text-sm">Git</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-white text-center px-6 border-t border-gray-50">
-        <p class="text-sm font-bold text-gray-900 uppercase tracking-tighter">David Jose Giraldy</p>
-        <p class="text-[10px] text-gray-400 mt-2 uppercase">Computer Science & Mathematics | BINUS University</p>
-    </footer>
 
 </body>
 </html>
